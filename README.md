@@ -8,11 +8,12 @@ This is a simple implementation of a **JWKS (JSON Web Key Set) server** that pro
 --- 
 
 ## 📖 Table of Contents 
-- [Requirements](#requirements)
-- [Setup](#setup)
-- [Endpoints](#endpoints)
-- [Example API Response](#example-response)
-- [License](#license)
+- [Requirements](#📌-Requirements)
+- [Setup](#⚙️-Setup)
+- [Endpoints](#📡-Endpoints)
+- [Example API Response](#📌-Example-Response)
+- [License](#📝-License)
+- [Contribute](#⭐-Contributing)
 
 --- 
 
@@ -31,8 +32,8 @@ You can install the dependencies automatically by following the **Setup** steps 
 To get started, follow these steps: 
 
 1️⃣ **Clone the repository:** 
-```bash 
-git clone https://github.com/yourusername/jwks-server.git
+```bash
+git clone https://github.com/tobifotis/jwks-server.git
 ```
 2️⃣ **Navigate into the project directory:** 
 ```bash 
