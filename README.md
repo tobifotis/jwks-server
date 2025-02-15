@@ -1,5 +1,5 @@
 # 📌 JWKS Server 
-![Python Version](https://img.shields.io/badge/python-3.12-blue) 
+![Python Version](https://img.shields.io/badge/python-blue) 
 
 This is a simple implementation of a **JWKS (JSON Web Key Set) server** that provides public keys for verifying **JWTs (JSON Web Tokens).** 
 
@@ -8,7 +8,7 @@ This is a simple implementation of a **JWKS (JSON Web Key Set) server** that pro
 ## 📌 Requirements
 
 Before running the server, make sure you have the following installed:
-- ✅ Python 3.12
+- ✅ Python
 - ✅ Flask
 - ✅ PyJWT
 - ✅ Cryptography
