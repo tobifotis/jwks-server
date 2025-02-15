@@ -58,7 +58,8 @@ python -m jwks_server.main
 
 --- 
 
-## 📌 Example Response ### **Request:** 
+## 📌 Example Response 
+### **Request:** 
 To retrieve the JSON Web Key Set (JWKS), run: 
 ```bash 
 curl -X GET http://localhost:5000/.well-known/jwks.json
