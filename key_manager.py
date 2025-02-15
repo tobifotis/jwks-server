@@ -1,88 +1,36 @@
 # key_manager.py
-
 import datetime
-import base64
-import hashlib
-import threading
-
-from cryptography.hazmat.primitives import serialization
+import uuid
 from cryptography.hazmat.primitives.asymmetric import rsa
 
-KEY_VALIDITY_MINUTES = 5  # How long each key is valid
+# Global variable to store the valid key instance
+_valid_key = None
 
 class Key:
-    """
-    Represents an RSA key pair with:
-    - kid (key ID)
-    - expiry (datetime)
-    - private_key (rsa.RSAPrivateKey)
-    - public_key (rsa.RSAPublicKey)
-    """
-    def __init__(self, kid, expiry, private_key):
-        self.kid = kid
-        self.expiry = expiry
+    def __init__(self, private_key, expiry, kid):
         self.private_key = private_key
+        self.expiry = expiry
+        self.kid = kid
         self.public_key = private_key.public_key()
 
-# A thread-safe list to store keys
-lock = threading.Lock()
-keys = []
-
-def generate_rsa_key():
-    """
-    Generates a new RSA key pair, computes a unique kid, and sets expiry.
-    """
-    private_key = rsa.generate_private_key(
-        public_exponent=65537,
-        key_size=2048
-    )
-
-    # Convert public key to bytes (DER format) to create a stable kid
-    pub_bytes = private_key.public_key().public_bytes(
-        encoding=serialization.Encoding.DER,
-        format=serialization.PublicFormat.SubjectPublicKeyInfo
-    )
-
-    # Use a SHA-256 hash of the public key bytes as kid
-    kid_raw = hashlib.sha256(pub_bytes).digest()
-    kid = base64.urlsafe_b64encode(kid_raw).decode('utf-8').rstrip("=")
-
-    expiry = datetime.datetime.utcnow() + datetime.timedelta(minutes=KEY_VALIDITY_MINUTES)
-    new_key = Key(kid, expiry, private_key)
-
-    with lock:
-        keys.append(new_key)
-
-    return new_key
-
 def get_valid_key():
-    """
-    Returns an unexpired key if one exists, otherwise generates a new one.
-    """
-    now = datetime.datetime.utcnow()
-    with lock:
-        for k in keys:
-            if now < k.expiry:
-                return k
-    # No valid key found, generate a new one
-    return generate_rsa_key()
+    global _valid_key
+    if _valid_key is None:
+        key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+        expiry = datetime.datetime.utcnow() + datetime.timedelta(days=1)  # Valid for 1 day
+        # Generate a unique key ID using uuid
+        _valid_key = Key(key, expiry, str(uuid.uuid4()))
+    return _valid_key
 
 def get_expired_key():
-    """
-    Returns a newly generated key but forces it to be expired.
-    """
-    new_key = generate_rsa_key()
-    new_key.expiry = datetime.datetime.utcnow() - datetime.timedelta(minutes=1)
-    return new_key
+    # Generate a new key that is already expired
+    key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+    expiry = datetime.datetime.utcnow() - datetime.timedelta(days=1)  # Expired 1 day ago
+    return Key(key, expiry, str(uuid.uuid4()))
 
 def get_unexpired_keys():
-    """
-    Returns a list of all keys that have not expired.
-    """
-    now = datetime.datetime.utcnow()
-    unexpired = []
-    with lock:
-        for k in keys:
-            if now < k.expiry:
-                unexpired.append(k)
-    return unexpired
+    # Return the valid key if it hasn't expired; otherwise, return an empty list.
+    key = get_valid_key()
+    if key.expiry > datetime.datetime.utcnow():
+        return [key]
+    return []
