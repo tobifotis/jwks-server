@@ -8,12 +8,12 @@ This is a simple implementation of a **JWKS (JSON Web Key Set) server** that pro
 --- 
 
 ## 📖 Table of Contents 
-- [Requirements](#📌-Requirements)
-- [Setup](#⚙️-Setup)
-- [Endpoints](#📡-Endpoints)
-- [Example API Response](#📌-Example-Response)
-- [License](#📝-License)
-- [Contribute](#⭐-Contributing)
+- [Requirements](#requirements)
+- [Setup](#setup)
+- [Endpoints](#endpoints)
+- [Example API Response](#example-response)
+- [License](#license)
+- [Contribute](#contributing)
 
 --- 
 
