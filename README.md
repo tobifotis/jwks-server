@@ -1,11 +1,11 @@
 # 📌 JWKS Server 
 ![Python Version](https://img.shields.io/badge/python-3.x-blue) 
-![License](https://img.shields.io/github/license/yourusername/jwks-server) 
+![License](https://img.shields.io/github/license/tobifotis/jwks-server) 
 ![Build](https://img.shields.io/github/actions/workflow/status/yourusername/jwks-server/ci.yml?branch=main) 
 
 This is a simple implementation of a **JWKS (JSON Web Key Set) server** that provides public keys for verifying **JWTs (JSON Web Tokens).** 
 
---- 
+---
 
 ## 📖 Table of Contents
 - [Requirements](#requirements)
