@@ -7,24 +7,24 @@ This is a simple implementation of a **JWKS (JSON Web Key Set) server** that pro
 
 --- 
 
-## 📖 Table of Contents 
+## 📖 Table of Contents
 - [Requirements](#requirements)
 - [Setup](#setup)
 - [Endpoints](#endpoints)
-- [Example API Response](#example-response)
+- [Example API Response](#example-api-response)
 - [License](#license)
-- [Contribute](#contributing)
 
---- 
+---
 
-## 📌 Requirements 
-Before running the server, make sure you have the following installed: 
+## 📌 Requirements
+
+Before running the server, make sure you have the following installed:
 - ✅ Python 3.x
 - ✅ Flask
 - ✅ PyJWT
 - ✅ Cryptography
 
-You can install the dependencies automatically by following the **Setup** steps below. 
+You can install the dependencies automatically by following the **Setup** steps below.
 
 --- 
 
