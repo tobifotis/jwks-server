@@ -51,7 +51,7 @@ python -m jwks_server.main
 ### **Request:** 
 To retrieve the JSON Web Key Set (JWKS), run: 
 ```bash 
-curl -X GET http://localhost:5000/.well-known/jwks.json
+curl http://127.0.0.1:8080/.well-known/jwks.json
 ```
 
 ### **Response:** 
@@ -59,20 +59,17 @@ curl -X GET http://localhost:5000/.well-known/jwks.json
 {
   "keys": [
     {
+      "alg": "RS256",
+      "e": "AQAB",
+      "kid": "5fe782e6-e0f7-4e74-8f0b-c0ebc9d51026",
       "kty": "RSA",
-      "kid": "1234",
-      "use": "sig",
-      "n": "base64-encoded-key",
-      "e": "AQAB"
+      "n": "2FE8sF48p33uPwmsRI57LqWK9LvWVhMb-GXxJvdWBnX0x_9DTba41FwxWrE9aP-SeHpK70svXrmUrIKXAK52Gg75OfAa_Zuso1aRxOICZsS-NUJCJSLLaok0ytqzued-d2mcdYj8ADqsSB4dpwXpdzyLoV5YVeksS8FMaW_lINZM7Z_bJNi7M1EJ_-0oyfa8Y9M5jnBGFdMlSL5HsUelFH49ZkYcNzTfGW7xZnEmGF63vm7RxGWqbz5Joa0BhyxfDeU2Ky71dWNU0tVZ7AdqGBOhmr-NjuTZs_nBRmYLBaIwU1PALruSg1B17pzFTpTpNQZLw7_QDSmIfZhwjoWGaQ",
+      "use": "sig"
     }
   ]
 }
+
 ```
-
---- 
-
-## 📝 License 
-This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for more details. 
 
 --- 
 
