@@ -1,9 +1,6 @@
-# tests/test_key_manager.py
-
 import pytest
 from datetime import datetime
-from jwks_server.key_manager import generate_rsa_key, get_valid_key, get_expired_key, get_unexpired_keys
-
+from jwks_server.key_manager import generate_rsa_key, get_valid_key, get_expired_key, get_unexpired_keys  # Corrected import
 
 def test_generate_rsa_key():
     key = generate_rsa_key()

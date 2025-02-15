@@ -1,4 +1,3 @@
-# key_manager.py
 import datetime
 import uuid
 from cryptography.hazmat.primitives.asymmetric import rsa
@@ -12,6 +11,12 @@ class Key:
         self.expiry = expiry
         self.kid = kid
         self.public_key = private_key.public_key()
+
+# Add the generate_rsa_key function
+def generate_rsa_key():
+    key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+    expiry = datetime.datetime.utcnow() + datetime.timedelta(days=1)  # Valid for 1 day
+    return Key(key, expiry, str(uuid.uuid4()))
 
 def get_valid_key():
     global _valid_key

@@ -1,4 +1,3 @@
-# jwks_endpoint.py
 import base64
 from flask import Blueprint, jsonify
 from .key_manager import get_unexpired_keys

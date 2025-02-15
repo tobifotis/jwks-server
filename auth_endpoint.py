@@ -1,4 +1,3 @@
-# auth_endpoint.py
 import datetime
 import jwt
 from flask import Blueprint, request, jsonify
