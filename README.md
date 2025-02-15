@@ -14,7 +14,9 @@ This is a simple implementation of a **JWKS (JSON Web Key Set) server** that pro
 - [Example API Response](#example-response)
 - [License](#license)
 
---- ## 📌 Requirements 
+--- 
+
+## 📌 Requirements 
 Before running the server, make sure you have the following installed: 
 - ✅ Python 3.x
 - ✅ Flask
