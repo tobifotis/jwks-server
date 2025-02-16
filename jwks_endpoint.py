@@ -4,6 +4,7 @@ from .key_manager import get_unexpired_keys
 
 jwks_bp = Blueprint('jwks', __name__)
 
+
 @jwks_bp.route('/jwks.json', methods=['GET'])
 def jwks_handler():
     """
@@ -14,8 +15,16 @@ def jwks_handler():
 
     for key in keys:
         public_numbers = key.public_key.public_numbers()
-        n_bytes = public_numbers.n.to_bytes((public_numbers.n.bit_length() + 7) // 8, 'big')
-        e_bytes = public_numbers.e.to_bytes((public_numbers.e.bit_length() + 7) // 8, 'big')
+        n_bytes = (
+            public_numbers.n.to_bytes(
+                (public_numbers.n.bit_length() + 7) // 8, 'big'
+            )
+        )
+        e_bytes = (
+            public_numbers.e.to_bytes(
+                (public_numbers.e.bit_length() + 7) // 8, 'big'
+            )
+        )
 
         jwk = {
             "kty": "RSA",

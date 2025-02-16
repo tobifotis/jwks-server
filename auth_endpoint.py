@@ -5,6 +5,7 @@ from .key_manager import get_valid_key, get_expired_key
 
 auth_bp = Blueprint('auth', __name__)
 
+
 @auth_bp.route('', methods=['POST'])  # Endpoint: /auth
 def auth_handler():
     """

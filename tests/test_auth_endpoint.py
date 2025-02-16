@@ -1,6 +1,7 @@
 import json
 from jwks_server.main import create_app  # Corrected import
 
+
 def test_auth_endpoint():
     app = create_app()
     client = app.test_client()
